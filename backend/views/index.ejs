@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Roulette Ty Glas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self';">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="/images/logo-TBC.svg">
+</head>
+<body>
+<main>
+    <img id="titre" src="/images/titre.svg"/>
+
+    <div id="cartes">
+        <img id="cartes1" src="/images/cartes-jetons.svg"/>
+        <img id="cartes2" src="/images/cartes-jetons.svg"/>
+    </div>
+
+    <div id="div-roulette">
+        <img id="roulette" src="/images/roulette-tyglas7.svg"/>
+
+        <div class="slots-container">
+            <div id="slot1" class="slot">
+                <div class="slot-images">
+                    <img class="slot-img" src="/images/bieres.svg">
+                    <img class="slot-img" src="/images/coffee.svg">
+                    <img class="slot-img" src="/images/volant-blanc.svg">
+                    <img class="slot-img" src="/images/crepes2.svg">
+                    <img class="slot-img" src="/images/bob.svg" alt="bob">
+                </div>
+            </div>
+
+            <div id="slot2" class="slot">
+                <div class="slot-images">
+                    <img class="slot-img" src="/images/bieres.svg">
+                    <img class="slot-img" src="/images/coffee.svg">
+                    <img class="slot-img" src="/images/volant-blanc.svg">
+                    <img class="slot-img" src="/images/crepes2.svg">
+                    <img class="slot-img" src="/images/bob.svg" alt="bob">
+                </div>
+            </div>
+
+            <div id="slot3" class="slot">
+                <div class="slot-images">
+                    <img class="slot-img" src="/images/bieres.svg" alt="biere">
+                    <img class="slot-img" src="/images/coffee.svg" alt="coffee">
+                    <img class="slot-img" src="/images/volant-blanc.svg" alt="volants">
+                    <img class="slot-img" src="/images/crepes2.svg" alt="crepes">
+                    <img class="slot-img" src="/images/bob.svg" alt="bob">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a id="spin">
+        <img src="/images/bouton.svg">
+    </a>
+
+    <img id="biere" class="result hidden" src="images/results/win-biere.svg">
+    <img id="buvette" class="result hidden" src="images/results/win-buvette.svg">
+    <img id="cafe" class="result hidden" src="images/results/win-cafe.svg">
+    <img id="crepe" class="result hidden" src="images/results/win-crepe.svg">
+    <img id="perdu" class="result hidden" src="images/results/win-perdu.svg">
+    <img id="volant" class="result hidden" src="images/results/win-volant.svg">
+    <div id="shadow" class="hidden"></div>
+</main>
+<script src="/js/index.js"></script>
+</body>
+</html>

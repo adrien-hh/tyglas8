@@ -1,0 +1,26 @@
+.item-box {
+    position: relative;
+    width: 60vw;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.item-box:disabled {
+    cursor: not-allowed;
+    opacity: .8;
+}
+
+.cube {
+    position: absolute;
+    width: 100%;
+    transform-style: preserve-3d;
+    animation: floaty 2.2s ease-in-out infinite;
+}
+
+.item-box.spinning .cube {
+    animation: shake .25s linear infinite;
+    filter: brightness(1.1) saturate(1.2);
+}

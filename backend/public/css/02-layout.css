@@ -1,0 +1,30 @@
+body {
+    background-color: #000000;
+    min-height: 100vh;
+    height: 100vh;
+    text-align: center;
+    padding: 2rem 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+main {
+    padding-bottom: 60px;
+    position: relative;
+}
+
+#titre {
+    z-index: 1;
+    position: relative;
+    max-width: 85vw;
+}
+
+#game {
+    position: relative;
+    width: 100vw;
+    height: 45vh;
+    margin: 2rem auto;
+}

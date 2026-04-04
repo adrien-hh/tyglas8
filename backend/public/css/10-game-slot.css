@@ -1,0 +1,33 @@
+.slot {
+    width: 33%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slot {
+    width: 120px;
+    height: 120px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, .25);
+    outline: 2px solid rgba(255, 255, 255, .25);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.slot-images {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    transition: transform 0.1s ease-out;
+}
+
+.slot-img {
+    width: 86px;
+    height: 86px;
+    object-fit: contain;
+    transform: scale(1);
+}

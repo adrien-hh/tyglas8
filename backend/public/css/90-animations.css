@@ -1,0 +1,35 @@
+@keyframes shake {
+    0% {
+        transform: translateY(-6px) rotateX(10deg) rotateY(10deg);
+    }
+
+    25% {
+        transform: translateY(-8px) rotateX(8deg) rotateY(-12deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotateX(12deg) rotateY(8deg);
+    }
+
+    75% {
+        transform: translateY(-7px) rotateX(9deg) rotateY(-8deg);
+    }
+
+    100% {
+        transform: translateY(-6px) rotateX(10deg) rotateY(10deg);
+    }
+}
+
+@keyframes floaty {
+    0% {
+        transform: translateY(0) rotateX(8deg) rotateY(-18deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotateX(12deg) rotateY(18deg);
+    }
+
+    100% {
+        transform: translateY(0) rotateX(8deg) rotateY(-18deg);
+    }
+}

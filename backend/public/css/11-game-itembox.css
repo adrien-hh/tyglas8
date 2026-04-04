@@ -1,26 +1,50 @@
 .item-box {
-    position: relative;
-    width: 60vw;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    padding: 0;
-    -webkit-tap-highlight-color: transparent;
+  position: relative;
+  width: 60vw;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .item-box:disabled {
-    cursor: not-allowed;
-    opacity: .8;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.item-box.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .cube {
-    position: absolute;
-    width: 100%;
-    transform-style: preserve-3d;
-    animation: floaty 2.2s ease-in-out infinite;
+  position: absolute;
+  width: 100%;
+  transform-style: preserve-3d;
+  animation: floaty 2.2s ease-in-out infinite;
 }
 
 .item-box.spinning .cube {
-    animation: shake .25s linear infinite;
-    filter: brightness(1.1) saturate(1.2);
+  animation: shake 0.25s linear infinite;
+  filter: brightness(1.1) saturate(1.2);
+}
+
+.item-box.burst .cube {
+  animation: boxBurst 0.35s ease-out forwards;
+}
+
+@keyframes boxBurst {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-16px) scale(1.1) rotate(20deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-80px) scale(0.25) rotate(40deg);
+    opacity: 0;
+  }
 }

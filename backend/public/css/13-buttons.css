@@ -1,0 +1,22 @@
+#buttons-div {
+  position: absolute;
+  bottom: 70px;
+  right: 10px;
+}
+
+#logs,
+#test {
+  border-radius: 10%;
+  color: white;
+  padding: 10px;
+  background-color: black;
+  cursor: pointer;
+}
+
+#test {
+  font-size: 3vh;
+}
+
+#logs {
+  font-size: 3vh;
+}

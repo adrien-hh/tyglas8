@@ -1,129 +1,89 @@
-const root = document.documentElement;
-const spinButton = document.getElementById("spin");
-spinButton.addEventListener('click', spin);
+// index.js - Point d'entrée de l'application frontend
+import { AnimationManager } from "./AnimationManager.js";
+import { APIManager } from "./APIManager.js";
+import { GameManager } from "./GameManager.js";
 
-const symbols = [
-    {name: 'biere', offset: 0},
-    {name: 'cafe', offset: getSymbolHeight()},
-    {name: 'volant', offset: 2 * getSymbolHeight()},
-    {name: 'crepe', offset: 3 * getSymbolHeight()},
-    {name: 'buvette', offset: 4 * getSymbolHeight()}
-];
-let isSpinning = false;
+// Initialisation
+const gameManager = new GameManager();
+const spinButton = document.getElementById("play-button");
+const slotContainer = document.querySelector(".slots-container");
+const shadow = document.getElementById("shadow");
+const resultImages = Array.from(document.querySelectorAll(".result"));
+
+let animationManager;
 let spinningIntervals = [];
 
-async function fetchResult() {
-    try {
-        const response = await fetch('/spin', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({})
-        });
-
-        const data = await response.json();
-        setTimeout(() => {
-            toggleVisibility("shadow");
-            toggleVisibility(data.prize);
-            document.addEventListener("click", function reset() {
-                toggleVisibility(data.prize);
-                toggleVisibility("shadow");
-                document.removeEventListener("click", reset);
-            });
-        }, 2000)
-        return data;
-    } catch (err) {
-        console.error('Erreur lors de la requête POST :', err);
-    }
+// Fonction utilitaire
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function toggleVisibility(id) {
-    const element = document.getElementById(id);
-    element.classList.toggle('hidden');
+// Initialisation de l'application
+async function init() {
+  try {
+    await gameManager.initialize();
+    animationManager = new AnimationManager(gameManager);
+    console.log("🎮 Jeu initialisé avec succès");
+  } catch (error) {
+    console.error("❌ Erreur lors de l'initialisation:", error);
+  }
 }
 
-function spin() {
-    if (isSpinning) return;
+// Gestionnaire de clic sur la box
+function handlePlayClick() {
+  if (gameManager.isGameSpinning()) return;
 
-    isSpinning = true;
-    spinButton.disabled = true;
+  gameManager.setSpinning(true);
+  animationManager.hideResults(resultImages, shadow);
+  animationManager.animateBoxBurst(spinButton);
+  animationManager.showSlots(slotContainer);
+
+  delay(400).then(() => spin());
+}
+
+// Logique principale du spin
+async function spin() {
+  try {
+    spinButton.classList.add("spinning");
     spinningIntervals = [];
 
-    for (let i = 1; i <= 3; i++) {
-        const slot = document.getElementById(`slot${i}`);
-        resetSlot(slot);
-        const interval = spinSlot(slot);
-        spinningIntervals.push(interval);
-    }
+    // Démarrer la rotation
+    const slot = document.getElementById("slot1");
+    const interval = animationManager.startSlotSpin(slot);
+    spinningIntervals.push(interval);
 
-    setTimeout(async () => {
-        const backendResult = await fetchResult();
-        const resultCombination = (backendResult.combination);
-        stopSlots(resultCombination);
-    }, 1000 + Math.random() * 1000);
+    // Attendre la durée déterminée par le backend
+    const backendResult = await APIManager.spin();
+    const spinDuration = backendResult.spinDuration || 3000;
+
+    await delay(spinDuration);
+
+    // Arrêter sur le résultat
+    const resultCombination = backendResult.combination;
+    animationManager.stopSlotSpin(slot, resultCombination[0], interval);
+
+    await delay(1200);
+    animationManager.showResult(backendResult.prize, shadow, resultImages);
+
+    // Gestion du reset
+    document.addEventListener("click", resetGame, { once: true });
+  } catch (error) {
+    console.error("❌ Erreur lors du spin:", error);
+    resetGame();
+  }
 }
 
-function spinSlot(slot) {
-    const strip = slot.querySelector('.slot-images');
-
-    let index = 0;
-    const interval = setInterval(() => {
-        const symbolHeight = getSymbolHeight();
-        strip.style.transform = `translateX(-50%) translateY(-${index * symbolHeight}vh)`;
-        strip.style.transition = 'transform 0.1s linear';
-        index = (index + 1) % symbols.length;
-    }, 100);
-
-    return interval;
+// Reset du jeu
+function resetGame() {
+  animationManager.hideResults(resultImages, shadow);
+  animationManager.hideSlots(slotContainer);
+  animationManager.resetBox(spinButton);
+  spinButton.classList.remove("spinning");
+  gameManager.setSpinning(false);
 }
 
-function stopSlots(finalSymbols) {
-    const slots = [
-        document.getElementById('slot1'),
-        document.getElementById('slot2'),
-        document.getElementById('slot3')
-    ];
+// Événements
+spinButton.addEventListener("click", handlePlayClick);
 
-    finalSymbols.forEach((symbol, index) => {
-        setTimeout(() => {
-            stopSlot(slots[index], symbol, index === finalSymbols.length - 1, index);
-        }, index * 500);
-    });
-
-    setTimeout(() => {
-        isSpinning = false;
-
-        spinButton.disabled = false;
-    }, finalSymbols.length * 500 + 500);
-}
-
-function stopSlot(slot, targetSymbol, isLast, slotIndex) {
-    clearInterval(spinningIntervals[slotIndex]);
-
-    const strip = slot.querySelector('.slot-images');
-    const symbolObject = symbols.find(s => s.name === targetSymbol);
-
-    if (!symbolObject) {
-        console.error(`Symbole non trouvé : ${targetSymbol}`);
-        return;
-    }
-
-    strip.style.transition = 'transform 0.3s ease-out';
-    strip.style.transform = `translateX(-50%) translateY(-${symbolObject.offset}vh)`;
-
-    if (isLast) {
-        isSpinning = false;
-        spinButton.disabled = false;
-    }
-}
-
-function resetSlot(slot) {
-    const strip = slot.querySelector('.slot-images');
-    strip.style.transition = 'none';
-    strip.style.transform = 'translateX(-50%) translateY(0)';
-}
-
-function getSymbolHeight() {
-    return parseFloat(getComputedStyle(root).getPropertyValue('--symbol-height'));
-}
+// Démarrage
+init();

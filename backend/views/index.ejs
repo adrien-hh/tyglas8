@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Ty Glas 8</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self';">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-    <link rel="icon" type="image/svg+xml" href="/images/logo-TBC.svg">
-</head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self';"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css" />
+    <link rel="icon" type="image/svg+xml" href="/images/logo-TBC.svg" />
+  </head>
 
-<body>
+  <body>
     <main>
-        <img id="titre" src="/images/titre.svg" />
+      <img id="titre" src="/images/titre.svg" />
 
-        <div id="game">
-            <button id="play-button" class="item-box" aria-label="Lancer la boîte à objets">
-                <img src="/images/Item_Box_MK8.png" class="cube" aria-hidden="true" />
-            </button>
+      <div id="game">
+        <button
+          id="play-button"
+          class="item-box"
+          aria-label="Lancer la boîte à objets"
+        >
+          <img src="/images/Item_Box_MK8.png" class="cube" aria-hidden="true" />
+        </button>
 
-            <div class="slot">
-                <div class="slot-images">
-                    <img class="slot-img" src="/images/bieres.svg">
-                    <img class="slot-img" src="/images/coffee.svg">
-                    <img class="slot-img" src="/images/volant-blanc.svg">
-                    <img class="slot-img" src="/images/crepes2.svg">
-                    <img class="slot-img" src="/images/bob.svg" alt="bob">
-                </div>
+        <div class="slots-container hidden">
+          <div class="slot" id="slot1">
+            <div class="slot-images">
+              <img class="slot-img" src="/images/bieres.svg" alt="biere" />
+              <img class="slot-img" src="/images/coffee.svg" alt="cafe" />
+              <img
+                class="slot-img"
+                src="/images/volant-blanc.svg"
+                alt="volant"
+              />
+              <img class="slot-img" src="/images/crepes2.svg" alt="crepe" />
+              <img class="slot-img" src="/images/bob.svg" alt="buvette" />
             </div>
+          </div>
         </div>
+      </div>
 
-        <img id="biere" class="result hidden" src="images/results/win-biere.svg">
-        <img id="buvette" class="result hidden" src="images/results/win-buvette.svg">
-        <img id="cafe" class="result hidden" src="images/results/win-cafe.svg">
-        <img id="crepe" class="result hidden" src="images/results/win-crepe.svg">
-        <img id="perdu" class="result hidden" src="images/results/win-perdu.svg">
-        <img id="volant" class="result hidden" src="images/results/win-volant.svg">
-        <div id="shadow" class="hidden"></div>
+      <img
+        id="biere"
+        class="result hidden"
+        src="images/results/win-biere.svg"
+      />
+      <img
+        id="buvette"
+        class="result hidden"
+        src="images/results/win-buvette.svg"
+      />
+      <img id="cafe" class="result hidden" src="images/results/win-cafe.svg" />
+      <img
+        id="crepe"
+        class="result hidden"
+        src="images/results/win-crepe.svg"
+      />
+      <img
+        id="perdu"
+        class="result hidden"
+        src="images/results/win-perdu.svg"
+      />
+      <img
+        id="volant"
+        class="result hidden"
+        src="images/results/win-volant.svg"
+      />
+      <div id="shadow" class="hidden"></div>
     </main>
-    <script src="/js/index.js"></script>
-</body>
-
+    <script type="module" src="/js/index.js"></script>
+  </body>
 </html>

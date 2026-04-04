@@ -1,33 +1,47 @@
-.slot {
-    width: 33%;
-    height: 100%;
-    overflow: hidden;
-    position: relative;
+.slots-container {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 26vh;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: white;
+  width: 40vh;
+  max-width: 60vw;
+  height: var(--symbol-height);
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.3s ease-out;
+}
+
+.slots-container:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .slot {
-    width: 120px;
-    height: 120px;
-    border-radius: 18px;
-    background: rgba(0, 0, 0, .25);
-    outline: 2px solid rgba(255, 255, 255, .25);
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    opacity: 0;
+  width: 33%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .slot-images {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    transition: transform 0.1s ease-out;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: calc(5 * var(--symbol-height)); /* 5 images empilées */
+  transition: transform 0.1s ease-out;
 }
 
 .slot-img {
-    width: 86px;
-    height: 86px;
-    object-fit: contain;
-    transform: scale(1);
+  width: 100%;
+  height: var(--symbol-height);
+  object-fit: contain;
+  transform: scale(1);
 }

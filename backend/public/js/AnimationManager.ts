@@ -1,4 +1,5 @@
 // AnimationManager.ts - Gestion des animations
+export const CONTAINER_SIZE = 50; // 50vw par symbole
 export class AnimationManager {
   private gameManager: any;
 
@@ -46,8 +47,7 @@ export class AnimationManager {
     const symbols = this.gameManager.getConfig().symbols;
 
     const interval = setInterval(() => {
-      const symbolHeight = 20; // vh
-      strip.style.transform = `translateX(-50%) translateY(-${index * symbolHeight}vh)`;
+      strip.style.transform = `translate(-50%, calc(-50% - ${index * CONTAINER_SIZE}vw))`;
       strip.style.transition = "transform 0.1s linear";
       index = (index + 1) % symbols.length;
     }, 100);
@@ -62,7 +62,7 @@ export class AnimationManager {
     const offset = this.gameManager.calculateSymbolOffset(targetSymbol);
 
     strip.style.transition = "transform 0.3s ease-out";
-    strip.style.transform = `translateX(-50%) translateY(-${offset}vh)`;
+    strip.style.transform = `translateX(-50%) translateY(-${offset}vw)`;
   }
 
   resetSlot(slot: HTMLElement) {

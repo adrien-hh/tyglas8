@@ -3,24 +3,23 @@ import fs from "fs/promises";
 import mongoose from "mongoose";
 import { CONFIG } from "./config";
 import { RewardRepository } from "./repositories/RewardRepository";
+import { IReward } from "./types";
 
 const REWARDS_DATA = [
-  { combination: "biere", reward: "Des sous-bocks", quantity: 40, weight: 16 },
-  { combination: "cafe", reward: "Un café/un thé", quantity: 500, weight: 24 },
+  { symbol: "biere", quantity: 40, weight: 16 },
+  { symbol: "cafe", quantity: 500, weight: 24 },
   {
-    combination: "volant",
-    reward: "Deux volants pour ton match !",
+    symbol: "volant",
     quantity: 6,
     weight: 2.5,
   },
-  { combination: "crepe", reward: "Une crêpe", quantity: 500, weight: 24 },
+  { symbol: "crepe", quantity: 500, weight: 24 },
   {
-    combination: "buvette",
-    reward: "Une carte buvette de 10€",
+    symbol: "buvette",
     quantity: 1,
     weight: 0.5,
   },
-  { combination: "perdu", reward: "Perdu", quantity: 10000, weight: 33 },
+  { symbol: "perdu", quantity: 10000, weight: 33 },
 ];
 
 async function resetDatabase() {

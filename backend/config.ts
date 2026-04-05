@@ -1,12 +1,11 @@
 import path from "path";
-import { SymbolType } from "./types";
 
 export const CONFIG = {
   // Logging
   LOG_PATH: path.join(__dirname, "public", "logs", "tirages.txt"),
 
   // Symbols
-  SYMBOLS: ["biere", "cafe", "volant", "crepe", "buvette"] as SymbolType[],
+  SYMBOLS: ["biere", "cafe", "volant", "crepe", "buvette", "perdu"] as string[],
 
   // Game settings
   MIN_SPIN_DURATION: 2000,

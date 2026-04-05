@@ -38,7 +38,7 @@ function handlePlayClick() {
   animationManager.animateBoxBurst(spinButton);
   animationManager.showSlots(slotContainer);
 
-  delay(400).then(() => spin());
+  delay(100).then(() => spin());
 }
 
 // Logique principale du spin
@@ -54,16 +54,17 @@ async function spin() {
 
     // Attendre la durée déterminée par le backend
     const backendResult = await APIManager.spin();
+    console.log(backendResult);
     const spinDuration = backendResult.spinDuration || 3000;
 
     await delay(spinDuration);
 
     // Arrêter sur le résultat
-    const resultCombination = backendResult.combination;
-    animationManager.stopSlotSpin(slot, resultCombination[0], interval);
+    const prize = backendResult.symbol;
+    animationManager.stopSlotSpin(slot, prize, interval);
 
     await delay(1200);
-    animationManager.showResult(backendResult.prize, shadow, resultImages);
+    animationManager.showResult(prize, shadow, resultImages);
 
     // Gestion du reset
     document.addEventListener("click", resetGame, { once: true });

@@ -1,3 +1,5 @@
+import { CONTAINER_SIZE } from "./AnimationManager.js";
+
 // GameManager.ts - Gestion de l'état du jeu
 export class GameManager {
   private isSpinning = false;
@@ -23,6 +25,6 @@ export class GameManager {
 
   calculateSymbolOffset(symbolName: string): number {
     const symbolIndex = this.config.symbols.indexOf(symbolName);
-    return symbolIndex * 20; // 20vh par symbole
+    return symbolIndex * CONTAINER_SIZE;
   }
 }

@@ -10,7 +10,9 @@
     "nodemon": "^3.1.10"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "tsc",
+    "build:frontend": "tsc public/js/AnimationManager.ts public/js/APIManager.ts public/js/GameManager.ts --module ES2020 --target ES2020 --outDir public/js/ --skipLibCheck --ignoreConfig",
     "start": "node dist/index.js",
     "dev": "nodemon --exec ts-node index.ts",
     "dev:build": "nodemon dist/index.js",

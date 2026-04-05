@@ -1,10 +1,41 @@
-30/07/2025 18:49:09 ; récompense : Des sous-bocks
-30/07/2025 18:49:15 ; récompense : Perdu
-30/07/2025 18:50:15 ; récompense : Un café/un thé
-30/07/2025 18:53:44 ; récompense : Perdu
-30/07/2025 18:53:54 ; récompense : Une crêpe
-30/07/2025 18:54:09 ; récompense : Perdu
-30/07/2025 18:54:16 ; récompense : Des sous-bocks
-30/07/2025 18:57:04 ; récompense : Des sous-bocks
-12/08/2025 22:21:12 ; récompense : Un café/un thé
-12/08/2025 22:22:11 ; récompense : Perdu
+05/04/2026 20:12:01 ; récompense : biere
+05/04/2026 20:12:16 ; récompense : crepe
+05/04/2026 20:12:39 ; récompense : perdu
+05/04/2026 20:12:51 ; récompense : cafe
+05/04/2026 20:12:56 ; récompense : perdu
+05/04/2026 20:13:02 ; récompense : biere
+05/04/2026 20:58:27 ; récompense : perdu
+05/04/2026 21:00:09 ; récompense : cafe
+05/04/2026 21:00:16 ; récompense : cafe
+05/04/2026 21:00:22 ; récompense : perdu
+05/04/2026 21:02:25 ; récompense : perdu
+05/04/2026 21:04:09 ; récompense : cafe
+05/04/2026 21:04:16 ; récompense : cafe
+05/04/2026 21:05:09 ; récompense : cafe
+05/04/2026 21:05:15 ; récompense : crepe
+05/04/2026 21:05:21 ; récompense : crepe
+05/04/2026 21:05:25 ; récompense : cafe
+05/04/2026 21:05:31 ; récompense : perdu
+05/04/2026 21:09:08 ; récompense : biere
+05/04/2026 21:30:57 ; récompense : perdu
+05/04/2026 21:31:06 ; récompense : biere
+05/04/2026 21:31:17 ; récompense : perdu
+05/04/2026 21:34:38 ; récompense : crepe
+05/04/2026 21:34:44 ; récompense : perdu
+05/04/2026 21:34:55 ; récompense : cafe
+05/04/2026 21:35:02 ; récompense : biere
+05/04/2026 21:35:09 ; récompense : crepe
+05/04/2026 21:35:15 ; récompense : biere
+05/04/2026 21:35:35 ; récompense : crepe
+05/04/2026 21:35:40 ; récompense : cafe
+05/04/2026 21:35:45 ; récompense : perdu
+05/04/2026 21:37:04 ; récompense : perdu
+05/04/2026 21:37:10 ; récompense : perdu
+05/04/2026 21:37:16 ; récompense : biere
+05/04/2026 21:37:21 ; récompense : perdu
+05/04/2026 21:37:33 ; récompense : cafe
+05/04/2026 21:37:39 ; récompense : perdu
+05/04/2026 21:37:45 ; récompense : cafe
+05/04/2026 21:37:59 ; récompense : perdu
+05/04/2026 21:38:04 ; récompense : perdu
+05/04/2026 21:38:10 ; récompense : crepe

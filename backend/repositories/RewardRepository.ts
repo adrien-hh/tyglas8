@@ -10,12 +10,9 @@ export class RewardRepository {
     return await Reward.find();
   }
 
-  static async findById(id: string): Promise<IReward | null> {
-    return await Reward.findById(id);
-  }
 
-  static async findByCombination(combination: string): Promise<IReward | null> {
-    return await Reward.findOne({ combination });
+  static async findBySymbol(symbol: string): Promise<IReward | null> {
+    return await Reward.findOne({ symbol });
   }
 
   static async decrementQuantity(rewardId: string): Promise<IReward | null> {

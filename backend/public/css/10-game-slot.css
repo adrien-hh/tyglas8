@@ -1,18 +1,45 @@
 .slots-container {
-  opacity: 0;
-  pointer-events: none;
+  /* Positionnement */
   position: absolute;
-  top: 26vh;
+  top: 25vh;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transform-origin: center;
+  pointer-events: none;
+
+  /* Layout */
   display: flex;
-  margin: 0 auto;
   justify-content: center;
-  background-color: white;
-  width: 40vh;
-  max-width: 60vw;
-  height: var(--symbol-height);
+
+  /* Box Model */
+  width: var(--slot-container-size);
+  height: var(--slot-container-size);
+  margin: 0 auto;
+  overflow: hidden;
+
+  /* Bordure avec dégradé pour simuler le relief */
+  border: 8px solid #5a6270;
+  border-radius: 50%;
+
+  /* Ombres multiples pour les reflets */
+  box-shadow:
+    /* Reflet haut-gauche sur la bordure */
+    0 -2px 4px rgba(255, 255, 255, 0.4) inset,
+    /* Ombre bas-droite sur la bordure */ 0 2px 4px rgba(0, 0, 0, 0.6) inset,
+    /* Glow subtil externe */ 0 0 8px rgba(255, 255, 255, 0.1),
+    /* Ombre portée */ 0 4px 12px rgba(0, 0, 0, 0.4),
+    /* Profondeur interne */ inset 0 0 40px rgba(0, 0, 0, 0.2);
+
+  /* Visuel */
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+
+  /* Effets */
+  backdrop-filter: blur(2px);
   transition:
     opacity 0.3s ease-out,
     transform 0.3s ease-out;
@@ -24,7 +51,7 @@
 }
 
 .slot {
-  width: 33%;
+  width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -33,15 +60,19 @@
 .slot-images {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  margin-top: calc(var(--symbol-gap) / 3);
   width: 100%;
-  height: calc(5 * var(--symbol-height)); /* 5 images empilées */
   transition: transform 0.1s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--symbol-gap);
 }
 
 .slot-img {
-  width: 100%;
   height: var(--symbol-height);
+  width: var(--symbol-height);
   object-fit: contain;
   transform: scale(1);
 }

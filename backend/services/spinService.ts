@@ -1,5 +1,5 @@
 import { CONFIG } from "../config";
-import { IReward, ISpinResult, SymbolType } from "../types";
+import { IReward, ISpinResult } from "../types";
 import { LogService } from "./logService";
 import { RewardService } from "./rewardService";
 
@@ -13,10 +13,10 @@ export class SpinService {
       ? await RewardService.selectRewardAndDecrement(rewards)
       : await RewardService.selectReward(rewards);
 
-    const logService = new LogService(CONFIG.LOG_PATH);
-    logService.logResult(reward);
+    const symbol = this.generateSpinResult(reward);
 
-    const combination = this.generateSpinResult(reward, CONFIG.SYMBOLS);
+    const logService = new LogService(CONFIG.LOG_PATH);
+    logService.logResult(symbol);
 
     // Générer une durée de spin aléatoire
     const spinDuration =
@@ -24,22 +24,17 @@ export class SpinService {
       Math.random() * (CONFIG.MAX_SPIN_DURATION - CONFIG.MIN_SPIN_DURATION);
 
     return {
-      combination: combination,
-      prize: reward ? reward.combination : "perdu",
+      symbol: reward ? reward.symbol : "perdu",
       spinDuration: Math.round(spinDuration),
     };
   }
 
-  static generateSpinResult(
-    resultReward: IReward | null,
-    symbols: SymbolType[],
-  ): SymbolType[] {
-    if (resultReward && resultReward.combination !== "perdu") {
-      return [resultReward.combination as SymbolType];
+  static generateSpinResult(resultReward: IReward | null): string {
+    if (resultReward) {
+      return resultReward.symbol;
     }
 
-    const combination = symbols[Math.floor(Math.random() * symbols.length)];
-    return [combination];
+    return "perdu";
   }
 
   static getGameConfig() {

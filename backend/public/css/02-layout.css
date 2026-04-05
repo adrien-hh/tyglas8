@@ -3,7 +3,6 @@ body {
   min-height: 100vh;
   height: 100vh;
   text-align: center;
-  padding: 2rem 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -20,6 +19,7 @@ main {
   z-index: 1;
   position: relative;
   max-width: 85vw;
+  margin-top: 2rem;
 }
 
 #game {

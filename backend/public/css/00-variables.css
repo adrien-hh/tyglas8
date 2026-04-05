@@ -1,3 +1,5 @@
 :root {
-    --symbol-height: 20vh;
+  --slot-container-size: 50vw;
+  --symbol-height: 30vw;
+  --symbol-gap: calc(var(--slot-container-size) - var(--symbol-height));
 }

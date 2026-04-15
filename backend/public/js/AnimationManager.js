@@ -21,7 +21,7 @@ export class AnimationManager {
         images.forEach((image) => image.classList.add("hidden"));
         shadow.classList.add("hidden");
     }
-    showResult(prize, shadow, images) {
+    showResult(prize, shadow) {
         shadow.classList.remove("hidden");
         const prizeElement = document.getElementById(prize);
         if (prizeElement) {
@@ -36,8 +36,9 @@ export class AnimationManager {
         const strip = slot.querySelector(".slot-images");
         let index = 0;
         const symbols = this.gameManager.getConfig().symbols;
+        console.log(`Symbols : ${symbols}`);
         const interval = setInterval(() => {
-            strip.style.transform = `translate(-50%, calc(-50% - ${index * CONTAINER_SIZE}vw))`;
+            strip.style.transform = `translateX(-50%) translateY(-${index * CONTAINER_SIZE}vw)`;
             strip.style.transition = "transform 0.1s linear";
             index = (index + 1) % symbols.length;
         }, 100);

@@ -1,9 +1,9 @@
 import "dotenv/config";
 import fs from "fs/promises";
 import mongoose from "mongoose";
+import path from "path";
 import { CONFIG } from "./config";
 import { RewardRepository } from "./repositories/RewardRepository";
-import { IReward } from "./types";
 
 const REWARDS_DATA = [
   { symbol: "biere", quantity: 40, weight: 16 },
@@ -35,8 +35,11 @@ async function resetDatabase() {
     }
     console.log(`✓ Created ${REWARDS_DATA.length} rewards`);
 
-    await fs.writeFile(CONFIG.LOG_PATH, "");
-    console.log("✓ Log file reset");
+    await fs.mkdir(path.dirname(CONFIG.LOG_PATH), { recursive: true });
+    await fs.writeFile(CONFIG.LOG_PATH, "Date;Résultat\n", {
+      encoding: "utf8",
+    });
+    console.log("✓ Log file created/reset at", CONFIG.LOG_PATH);
 
     console.log("\n✓ Database reset successfully!");
   } catch (err) {

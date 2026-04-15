@@ -2,7 +2,7 @@ import path from "path";
 
 export const CONFIG = {
   // Logging
-  LOG_PATH: path.join(__dirname, "public", "logs", "tirages.txt"),
+  LOG_PATH: path.join(process.cwd(), "logs", "tirages.txt"),
 
   // Symbols
   SYMBOLS: ["biere", "cafe", "volant", "crepe", "buvette", "perdu"] as string[],

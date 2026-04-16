@@ -19,3 +19,9 @@ export interface IGameConfig {
   minSpinDuration: number;
   maxSpinDuration: number;
 }
+
+export interface ILog {
+  _id?: string;
+  date: Date;
+  result: string;
+}

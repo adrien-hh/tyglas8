@@ -1,20 +1,15 @@
-import * as fs from "node:fs";
+import Log from "../models/Log";
 
 export class LogService {
-  private logPath: string;
-
-  constructor(logPath: string) {
-    this.logPath = logPath;
-  }
-
-  logResult(symbol: string): void {
-    const now = new Date();
-    const time = now.toLocaleString("fr-FR");
-    const content = `${time} ; récompense : ${symbol}\n`;
-    fs.appendFile(this.logPath, content, (err) => {
-      if (err) {
-        console.error(err);
-      }
-    });
+  static async logResult(symbol: string): Promise<void> {
+    try {
+      const logEntry = new Log({
+        date: new Date(),
+        result: symbol,
+      });
+      await logEntry.save();
+    } catch (err) {
+      console.error("Erreur lors de l'enregistrement du log :", err);
+    }
   }
 }

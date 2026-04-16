@@ -15,8 +15,7 @@ export class SpinService {
 
     const symbol = this.generateSpinResult(reward);
 
-    const logService = new LogService(CONFIG.LOG_PATH);
-    logService.logResult(symbol);
+    await LogService.logResult(symbol);
 
     // Générer une durée de spin aléatoire
     const spinDuration =

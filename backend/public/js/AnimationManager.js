@@ -1,5 +1,31 @@
 // AnimationManager.ts - Gestion des animations
-export const CONTAINER_SIZE = 50; // 50vw par symbole
+export function updateSizes() {
+    const width = window.innerWidth;
+    let containerSize;
+    if (width < 768) {
+        // Mobile
+        containerSize = 50;
+        document.documentElement.style.setProperty("--slot-container-size", "50vw");
+        document.documentElement.style.setProperty("--symbol-height", "30vw");
+    }
+    else if (width < 1200) {
+        // Tablet/Desktop moyen
+        containerSize = 40;
+        document.documentElement.style.setProperty("--slot-container-size", "40vw");
+        document.documentElement.style.setProperty("--symbol-height", "24vw");
+    }
+    else {
+        // Grand écran
+        containerSize = 25;
+        document.documentElement.style.setProperty("--slot-container-size", "25vw");
+        document.documentElement.style.setProperty("--symbol-height", "15vw");
+    }
+    return containerSize;
+}
+// Initialiser les tailles au chargement
+updateSizes();
+// Mettre à jour au redimensionnement
+window.addEventListener("resize", updateSizes);
 export class AnimationManager {
     constructor(gameManager) {
         this.gameManager = gameManager;
@@ -38,7 +64,8 @@ export class AnimationManager {
         const symbols = this.gameManager.getConfig().symbols;
         console.log(`Symbols : ${symbols}`);
         const interval = setInterval(() => {
-            strip.style.transform = `translateX(-50%) translateY(-${index * CONTAINER_SIZE}vw)`;
+            const containerSize = updateSizes();
+            strip.style.transform = `translateX(-50%) translateY(-${index * containerSize}vw)`;
             strip.style.transition = "transform 0.1s linear";
             index = (index + 1) % symbols.length;
         }, 100);

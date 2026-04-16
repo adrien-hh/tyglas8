@@ -4,8 +4,8 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media screen and (min-width: 768px) {
-  .item-box {
-    width: 50vw;
+  #titre {
+    width: 70vw;
   }
   .result {
     width: 70vw;
@@ -14,10 +14,22 @@
 
 /* Large devices (desktops, 992px and up) */
 @media screen and (min-width: 992px) {
+  #titre {
+    width: 55vw;
+  }
+  .result {
+    width: 55vw;
+  }
 }
 
 /* X-Large devices (large desktops, 1200px and up) */
 @media screen and (min-width: 1200px) {
+  #titre {
+    width: 40vw;
+  }
+  .result {
+    width: 40vw;
+  }
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */

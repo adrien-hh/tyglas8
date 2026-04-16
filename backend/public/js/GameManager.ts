@@ -1,4 +1,4 @@
-import { CONTAINER_SIZE } from "./AnimationManager.js";
+import { updateSizes } from "./AnimationManager.js";
 
 // GameManager.ts - Gestion de l'état du jeu
 export class GameManager {
@@ -25,6 +25,6 @@ export class GameManager {
 
   calculateSymbolOffset(symbolName: string): number {
     const symbolIndex = this.config.symbols.indexOf(symbolName);
-    return symbolIndex * CONTAINER_SIZE;
+    return symbolIndex * updateSizes();
   }
 }

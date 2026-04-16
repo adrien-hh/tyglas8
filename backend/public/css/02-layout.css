@@ -20,11 +20,11 @@ main {
   z-index: 1;
   position: relative;
   width: 85vw;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 #game {
   position: relative;
   width: var(--slot-container-size);
-  margin: 10vh auto;
+  margin: 7vh auto;
 }

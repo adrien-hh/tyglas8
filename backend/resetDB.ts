@@ -4,25 +4,25 @@ import { RewardRepository } from "./repositories/RewardRepository";
 
 // Samedi
 const REWARDS_DATA = [
-  { symbol: "biere", quantity: 50, weight: 26.5 },
+  { symbol: "biere", quantity: 50, weight: 26.46 },
   { symbol: "crepe", quantity: 5, weight: 2.65 },
-  { symbol: "cafe", quantity: 15, weight: 8 },
-  { symbol: "volant", quantity: 3, weight: 1.6 },
+  { symbol: "cafe", quantity: 25, weight: 13.47 },
+  { symbol: "volant", quantity: 3, weight: 1.59 },
   { symbol: "figurine", quantity: 5, weight: 2.65 },
-  { symbol: "banane", quantity: 6, weight: 3.2 },
-  { symbol: "perdu", quantity: 1000, weight: 55.4 },
+  { symbol: "banane", quantity: 6, weight: 3.18 },
+  { symbol: "perdu", quantity: 1000, weight: 50 },
 ];
 
 // Dimanche
 /*
 const REWARDS_DATA = [
-  { symbol: "biere", quantity: 49, weight: 26.65 },
-  { symbol: "crepe", quantity: 5, weight: 2.75 },
-  { symbol: "cafe", quantity: 15, weight: 8.2 },
-  { symbol: "volant", quantity: 3, weight: 1.65 },
-  { symbol: "figurine", quantity: 5, weight: 2.75 },
-  { symbol: "banane", quantity: 6, weight: 3.3 },
-  { symbol: "perdu", quantity: 1000, weight: 54.7 },
+  { symbol: "biere", quantity: 49, weight: 26.63 },
+  { symbol: "crepe", quantity: 5, weight: 2.72 },
+  { symbol: "cafe", quantity: 23, weight: 13.03 },
+  { symbol: "volant", quantity: 3, weight: 1.63 },
+  { symbol: "figurine", quantity: 5, weight: 2.72 },
+  { symbol: "banane", quantity: 6, weight: 3.27 },
+  { symbol: "perdu", quantity: 1000, weight: 50 },
 ];
 */
 

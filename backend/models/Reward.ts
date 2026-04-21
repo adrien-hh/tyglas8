@@ -7,7 +7,7 @@ const rewardsSchema = new mongoose.Schema<IRewardDocument>({
   symbol: {
     type: String,
     required: true,
-    enum: ["biere", "cafe", "volant", "crepe", "buvette", "perdu"],
+    enum: ["biere", "cafe", "volant", "crepe", "figurine", "banane", "perdu"],
   },
   quantity: { type: Number, required: true },
   weight: { type: Number, required: true },

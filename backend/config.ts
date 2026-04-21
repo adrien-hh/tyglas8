@@ -1,6 +1,14 @@
 export const CONFIG = {
   // Symbols
-  SYMBOLS: ["biere", "cafe", "volant", "crepe", "buvette", "perdu"] as string[],
+  SYMBOLS: [
+    "biere",
+    "cafe",
+    "volant",
+    "crepe",
+    "banane",
+    "figurine",
+    "perdu",
+  ] as string[],
 
   // Game settings
   MIN_SPIN_DURATION: 1500,
